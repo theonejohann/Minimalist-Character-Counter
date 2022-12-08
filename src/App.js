@@ -1,58 +1,29 @@
 import React from 'react';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
-const { Header, Content, Footer } = Layout;
-const App = () => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
-  return (
-    <Layout className="layout">
+import { Layout } from 'antd';
+import { Input } from 'antd';
+import { Button, Space } from 'antd';
+import './style.css';
+const { TextArea } = Input;
+
+const { Header, Footer, Sider, Content } = Layout;
+
+function count_words() {}
+
+const App = () => (
+  <>
+    <Layout>
       <Header>
-        <div className="logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['2']}
-          items={new Array(15).fill(null).map((_, index) => {
-            const key = index + 1;
-            return {
-              key,
-              label: `nav ${key}`,
-            };
-          })}
-        />
+        <top>Character Counter</top>
       </Header>
-      <Content
-        style={{
-          padding: '0 50px',
-        }}
-      >
-        <Breadcrumb
-          style={{
-            margin: '16px 0',
-          }}
-        >
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
-        <div
-          className="site-layout-content"
-          style={{
-            background: colorBgContainer,
-          }}
-        >
-          Content
-        </div>
+      <Content>
+        <TextArea
+          showCount={true}
+          rows={10}
+          placeholder={'Paste text here...'}
+        />
+        <br />
       </Content>
-      <Footer
-        style={{
-          textAlign: 'center',
-        }}
-      >
-        Ant Design ©2018 Created by Ant UED
-      </Footer>
     </Layout>
-  );
-};
+  </>
+);
 export default App;
